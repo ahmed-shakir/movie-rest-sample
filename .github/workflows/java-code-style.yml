@@ -3,7 +3,13 @@
 # and https://github.com/marketplace/actions/run-java-checkstyle
 
 name: Java code style check
-on: pull_request
+on:
+  push:
+    branches:
+      - *
+  pull_request:
+    branches:
+      - *
 
 jobs:
   checkstyle:
@@ -12,7 +18,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
       - name: Run check on sourcecode
-        uses: dbelyaev/action-checkstyle@master
+        uses: dbelyaev/action-checkstyle@v0.3.4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           checkstyle_config: ./custom_google_checks.xml
