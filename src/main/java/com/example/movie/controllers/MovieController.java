@@ -1,17 +1,15 @@
 package com.example.movie.controllers;
 
-import java.util.List;
-
+import com.example.movie.entities.Movie;
+import com.example.movie.services.MovieService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.movie.entities.Movie;
-import com.example.movie.services.MovieService;
-
-import lombok.RequiredArgsConstructor;
+import java.util.List;
 
 /**
  * Movie API
@@ -26,15 +24,18 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class MovieController {
     private final MovieService movieService;
+    private String a, b2, C3;
+
+    enum category { ACTION, THRILLER, drama, cOmEdY}
 
     @GetMapping
     public ResponseEntity<List<Movie>> findAllMovies(@RequestParam(required = false) String title) {
         var isTitleAvailableString = "Title is available: " + !(title == null || title.isEmpty());
         var titleString = "Title: " + (title != null ? title : "N/A");
-        var codeString = "Code: " + (title != null ? title.substring(0, 1).toUpperCase() + "123" : "1234");
+        var codeStringXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXx = "Code: " + (title != null ? title.substring(0, 1).toUpperCase() + "123" : "1234");
 
         System.out.println(isTitleAvailableString);
-        System.out.println(titleString + " " + codeString);
+        System.out.println(titleString + " " + codeStringXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXx);
 
         return ResponseEntity.ok(movieService.findAll(title));
     }
