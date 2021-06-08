@@ -25,7 +25,9 @@ public class MovieService {
 
     public List<Movie> findAll(String title) {
         var movies = movieRepository.findAll();
-        movies = movies.stream().filter(movie -> movie.getTitle().contains(title)).collect(Collectors.toList());
+        movies = movies.stream()
+                .filter(movie -> movie.getTitle().contains(title))
+                .collect(Collectors.toList());
         if(movies.isEmpty()) {
             log.info("Searching in OMDB");
             var movieSearch = consumerService.search(title);
